@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Kageyo Learning Center | Login</title>
+  <link rel="icon" href="download3.jpg" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Image Slider
+    let currentIndex = 0;
+    const images = ["WEB_1.jpg", "WEB_4.jpg", "WEB_6.jpg"];
+
+    function changeImage() {
+      const img = document.getElementById("banner-img");
+      currentIndex = (currentIndex + 1) % images.length;
+      img.src = images[currentIndex];
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setInterval(changeImage, 5000);
+    });
+
+    const mockResults = [
+  'Learning Resources',
+  'Courses at Kageyo Learning Center',
+  'Student Testimonials',
+  'Services Offered',
+  'Upcoming Events',
+  'Contact Us', // <-- Missing comma previously
+  'kageyo learning center',
+  'accounting notes'
+];
+
+
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById("search").value.trim().toLowerCase();
+      const resultsContainer = document.getElementById("search-results");
+      resultsContainer.innerHTML = '';
+
+      if (query) {
+        const filtered = mockResults.filter(item => item.toLowerCase().includes(query));
+        if (filtered.length) {
+          filtered.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            li.className = "px-4 py-2 text-gray-700 cursor-pointer hover:bg-blue-100";
+            resultsContainer.appendChild(li);
+          });
+        } else {
+          resultsContainer.innerHTML = '<li class="px-4 py-2 text-gray-700">No results found.</li>';
+        }
+        resultsContainer.classList.remove("hidden");
+      } else {
+        resultsContainer.classList.add("hidden");
+      }
+    }
+
+    function clearSearchResults() {
+      document.getElementById("search-results").classList.add("hidden");
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-[#009640] text-white">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-4">
+        <img src="download.png" alt="Kageyo Learning Center Logo" class="h-10 w-auto" />
+        <span class="text-2xl font-semibold">Kageyo Learning Center</span>
+      </div>
+      <nav class="space-x-6 flex items-center">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="" class="hover:underline">About</a>
+        <a href="dashboard.html" class="hover:underline">Learning</a>
+        <a href="services.html" class="hover:underline">Services</a>
+        <a href="" class="hover:underline">Resources</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+
+        <!-- Search Form -->
+        <form onsubmit="handleSearch(event)" class="relative flex items-center space-x-2">
+          <input type="text" id="search" placeholder="Search..." class="px-4 py-2 border border-gray-300 rounded-md focus:ring-[#6FBF73] w-64" oninput="handleSearch(event)" onblur="setTimeout(clearSearchResults, 200)" />
+          <button type="submit" class="bg-[#003B2C] text-white px-4 py-2 rounded-md hover:bg-[#6FBF73] focus:ring-2 focus:ring-[#6FBF73]">
+            🔍
+          </button>
+          <ul id="search-results" class="absolute bg-white shadow-md w-64 mt-14 border border-gray-200 rounded-md hidden z-50"></ul>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative">
+    <img id="banner-img" src="WEB_1.jpg" alt="Students in class at Kageyo Learning Center" class="w-full h-64 object-cover object-center shadow-md" />
+    <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 text-white text-center">
+      <h2 class="text-3xl font-bold">Welcome to Kageyo Learning Center</h2>
+      <p class="text-lg mt-2">Empowering minds, enriching futures</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4 py-12 bg-gray-100">
+
+  
+<!-- News Section -->
+<section class="bg-white p-6 shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold text-[#003B2C] mb-6">Kageyo News</h2>
+    <!-- News Item 2 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="https://pbs.twimg.com/media/FgAHt9iXoAYnkV9?format=jpg&name=small" alt="NESA PISA" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">Birabujijwe kwambuka umuhanda utanyuze ahabugenewe (Zebra crossing)
+          4.  Birabujijwe kwambuka umuhanda wambaye udukoresho dusakaza amajwi (Ecouteur) uri kumva umuziki. </h3>
+        <p class="text-sm text-gray-500">Tuesday, 18 March, 2025</p>
+        <p class="text-gray-700 mt-2">1/3 Ejo kuwa 25 ukwakira 2022 muri 
+          @KageyoT
+           twasuwe na 
+          @Rwandapolice
+           ishami rishinzwe umutekano wo mu muhanda mu Karere ka 
+          @GicumbiDistrict
+           Aho twize uko bakoresha umuhanda neza #Roadsafety ndetse twibutswa neza ibyo umunyamaguru agomba kwitaho mbere yo kwambuka umuhanda.
+          </p>
+        <a href="https://www.nesa.gov.rw/online-services/nesa-yatangije-ubukangurambaga-bujyanye-na-pisa-2025" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+   <!-- News Item 4 -->
+   <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+    <img src="jean.jpg" alt="Minister Visit" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+    <div>
+      <h3 class="text-xl font-semibold text-[#003B2C]">THE BEST PROFESSIONAL AND ETHICAL EMPLOYEE OF THE YEAR 2022 - RWEMARIKA JEAN LOUIS</h3>
+      <p class="text-sm text-gray-500">Friday, 09 August, 2024</p>
+      <p class="text-gray-700 mt-2">Tuesday, 31 May, 2022
+        RWEMARIKA JEAN LOUIS, is the "Best Professional and Ethical Employee of the Year 2022". She currently serves as the "Examinations Data Entry Clerk" in the…
+        </p>
+      <a href="https://https://www.nesa.gov.rw/online-services/best-employee-of-the-year-2022-asimwe-hellen">Read More</a>
+    </div>
+  </div>
+    <!-- News Item 1 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="download2.jpeg" alt="PISA" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">What is PISA and Why is Rwanda Participating</h3>
+        <p class="text-sm text-gray-500">Wednesday, 19 March, 2025</p>
+        <p class="text-gray-700 mt-2">The Programme for International Student Assessment (PISA) is a global study by the OECD that evaluates education systems by testing…</p>
+        <a href="https://www.nesa.gov.rw/online-services/what-is-pisa-and-why-is-rwanda-participating" class="text-[#6FBF73] hover:underline">Read More</a>
+        </div>
+    </div>
+  
+    <!-- News Item 2 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="nesa.jpeg" alt="NESA PISA" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">NESA yatangije Ubukangurambaga bujyanye na PISA 2025</h3>
+        <p class="text-sm text-gray-500">Tuesday, 18 March, 2025</p>
+        <p class="text-gray-700 mt-2">Kigali, Rwanda – Ku wa 17 Werurwe 2025 – Minisiteri y’Uburezi ibinyujije mu Kigo cy’Igihugu Gishinzwe Ibizamini n’Ubugenzuzi bw’Amashuri…</p>
+        <a href="https://www.nesa.gov.rw/online-services/nesa-yatangije-ubukangurambaga-bujyanye-na-pisa-2025" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 3 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="grades.jpeg" alt="Results Announcement" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">IBIBAZO N’IBISUBIZO KU MANOTA Y’IBIZAMINI BYA LETA</h3>
+        <p class="text-sm text-gray-500">Monday, 18 November, 2024</p>
+        <p class="text-gray-700 mt-2">Minisiteri Y'uburezi Yatangaje Amanota y’ibizamini Bya Leta Bisoza Icyiciro Cya Kabiri Cy’amashuri Yisumbuye umwaka w’amashuri wa 2023/2024…</p>
+        <a href="https://www.nesa.gov.rw/online-services/ibibazo-nibisubizo-ku-bijyanye-nitangazwa-ryamanota-yibizamini-bya-leta-bisoza-icyiciro-cya-kabiri-cyamashuri-yisumbuye-2023-2024" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 4 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="minister_visit.jpeg" alt="Minister Visit" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">Minister of Education Visits Marking Centers in Muhanga</h3>
+        <p class="text-sm text-gray-500">Friday, 09 August, 2024</p>
+        <p class="text-gray-700 mt-2">The Minister of Education, Dr. Gaspard Twagirayezu, made a significant visit today to key National Examination Marking Centers…</p>
+        <a href="https://www.nesa.gov.rw/online-services/minisiteri-yuburezi-yatangaje-amanota-yibizamini-bya-leta-bisoza-icyiciro-cya-kabiri-cyamashuri-yisumbuye-umwaka-wamashuri-wa-2023-2024" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 5 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="ple_students.jpeg" alt="National Exams" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">235,572 Students Begin Secondary National Examinations</h3>
+        <p class="text-sm text-gray-500">Wednesday, 24 July, 2024</p>
+        <p class="text-gray-700 mt-2">Today marks the start of the 2023/2024 Secondary National Examinations, a pivotal moment for 235,572 secondary students across Rwanda…</p>
+        <a href="https://www.nesa.gov.rw/online-services/minister-of-education-visits-national-examination-marking-centers-in-muhanga-district" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 6 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="practical_exam.jpeg" alt="PLE Students" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">Primary Leaving Examinations (PLE) Commence</h3>
+        <p class="text-sm text-gray-500">Monday, 08 July, 2024</p>
+        <p class="text-gray-700 mt-2">The PLE exams commenced today for over 202,999 students across Rwanda, a major milestone in the academic calendar…</p>
+        <a href="https://www.nesa.gov.rw/online-services/235572-students-begin-secondary-national-examinations-across-rwanda" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 7 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="philbert.jpg" alt="Practical Exams" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">Ministry Launches 2023-2024 Practical National Exams</h3>
+        <p class="text-sm text-gray-500">Tuesday, 18 June, 2024</p>
+        <p class="text-gray-700 mt-2">The Ministry of Education has officially launched practical national examinations, strengthening hands-on assessments in schools…</p>
+        <a href="https://www.nesa.gov.rw/online-services/ministry-of-education-launches-2023-2024-practical-national-examinations" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+    <!-- News Item 8 -->
+    <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+      <img src="dow.jpg" alt="Philbert MBABAZI" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+      <div>
+        <h3 class="text-xl font-semibold text-[#003B2C]">Philbert MBABAZI Named NESA's Best Employee 2023/2024</h3>
+        <p class="text-sm text-gray-500">Friday, 07 June, 2024</p>
+        <p class="text-gray-700 mt-2">We speak with Philbert MBABAZI, a distinguished engineer honored as NESA’s Best Employee of the Year 2023/2024…</p>
+        <a href="https://www.nesa.gov.rw/online-services/philbert-mbabazi-a-distinguished-engineer-recognized-as-the-best-employee-of-the-2023-2024-year" class="text-[#6FBF73] hover:underline">Read More</a>
+      </div>
+    </div>
+  
+      <!-- News Item 2 -->
+      <div class="mb-6 flex flex-col md:flex-row items-start md:items-center">
+        <img src="https://www.kigalitoday.com/IMG/jpg/inzu-118.jpg" alt="NESA PISA" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+        <div>
+          <h3 class="text-xl font-semibold text-[#003B2C]">Gicumbi: Inkongi yibasiye icumbi ry’abarimu bakosora ibizamini bya Leta</h3>
+          <p class="text-sm text-gray-500">11-08-2023 - 16:30'  </p>
+          <p class="text-gray-700 mt-2">Kuri uyu wa Gatanu tariki ya 11 Kanama 2023 inkongi yibasiye icumbi ry’abarimu bari mu gikorwa cyo gukosora ibizamini bya Leta riherereye mu kigo cy’amashuri y’imyuga n’ubumenyi ngiro (TSS) riherereye mu Murenge wa Kageyo mu Karere ka Gicumbi.</p>
+          <img src="https://www.kigalitoday.com/IMG/jpg/matelas.jpg" alt="NESA PISA" class="w-full md:w-48 h-32 object-cover rounded mr-4 mb-4 md:mb-0">
+        </div>
+      </div>
+    
+    <!-- Pagination (Optional) -->
+    <div class="mt-4 text-center">
+      <a href="#" class="text-[#003B2C] hover:underline">1</a>
+      <a href="#" class="text-[#003B2C] hover:underline mx-2">2</a>
+      <a href="#" class="text-[#003B2C] hover:underline">3</a>
+      <span class="mx-2">...</span>
+      <a href="#" class="text-[#003B2C] hover:underline">Next &rarr;</a>
+    </div>
+  </section>
+  
+    <!-- Login Section -->
+    <section class="bg-white shadow-lg rounded-lg p-8">
+      <h2 class="text-2xl font-bold text-center text-[#003B2C] mb-6">Log in to Your Account</h2>
+      <form action="dashboard.html" method="GET" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#6FBF73]" />
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" name="password" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#6FBF73]" />
+        </div>
+        <div class="flex items-center justify-between">
+          <label class="flex items-center text-sm text-gray-700">
+            <input type="checkbox" class="mr-2 text-[#6FBF73]" /> Remember me
+          </label>
+          <a href="#" class="text-sm text-[#003B2C] hover:text-[#6FBF73]">Forgot password?</a>
+        </div>
+        <button type="submit" class="w-full bg-[#003B2C] text-white py-2 rounded-md hover:bg-[#6FBF73] focus:ring-2 focus:ring-[#6FBF73]">Log In</button>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          Don't have an account? <a href="signup.html" class="text-[#6FBF73] hover:underline">Sign Up</a>
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+ 
+ <!-- Footer -->
+<footer class="bg-[#003B2C] text-white">
+  <div class="max-w-7xl mx-auto py-6 px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy;  eskageyo2017@gmail.com.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Terms of Service</a>
+          <a href="#" class="hover:underline">Contact Us</a>
+          <!-- New link added here -->
+          <a href="https://mabumbe.com/za/kageyo-tvet-school-application-courses-contacts-fees/" class="hover:underline">Kageyo TVET School Info</a>
+      </div>
+  </div>
+</footer>
+</body>
+</html>
